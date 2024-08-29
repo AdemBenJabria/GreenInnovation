@@ -1,0 +1,167 @@
+.hero-section {
+    background: linear-gradient(to bottom, #81c784, #aed581);
+    color: white;
+    text-align: center;
+    padding-top: 4rem; /* Réduit l'espace en haut pour rapprocher le texte du haut */
+    padding-bottom: 15rem; /* Vous pouvez ajuster cette valeur selon vos besoins */
+    padding-left: 8rem;
+    padding-right: 8rem;
+    position: relative;
+    z-index: 1;
+}
+
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: -1rem;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons .btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 0.5rem;
+    display: inline-block;
+}
+
+.btn.primary {
+    background-color: white;
+    color: #388e3c;
+    /* Vert plus doux */
+}
+
+.btn.primary:hover {
+    background-color: #f0f0f0;
+}
+
+.video-section {
+    position: relative;
+    top: -157.5px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    margin-bottom: 0;
+    border-radius: 8px;
+    z-index: 2;
+    border-radius: 16px 16px 16px 16px;
+}
+
+.video-section iframe {
+    position: relative;
+    z-index: 2;
+    /* Assure que la vidéo soit au-dessus des autres éléments */
+    border: 1px solid white;
+    /* Contour blanc léger */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Optionnel : ajout d'une ombre pour la profondeur */
+    border-radius: 8px;
+    /* Coins arrondis pour l'effet de douceur */
+}
+
+.video-cover {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.video-thumbnail {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border: 1.5px solid white;
+    /* Contour blanc léger */
+    border-radius: 16px 16px 16px 16px;
+    /* Arrondir les coins inférieurs pour un effet plus doux */
+}
+
+.lite-youtube {
+    background-color: #000;
+    position: relative;
+    display: block;
+    contain: content;
+    background-position: center center;
+    background-size: cover;
+    cursor: pointer;
+    max-width: 720px;
+    margin: 0 auto;
+    /* Centre la vidéo */
+    border-radius: 16px;
+    border: 1px solid #316bf4;
+    /* Utilisez une couleur verte pour correspondre à votre thème */
+}
+
+.lite-youtube:after {
+    content: "";
+    display: block;
+    padding-bottom: 56.25%;
+    /* Ratio 16:9 */
+}
+
+.lite-youtube .lty-playbtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 68px;
+    height: 48px;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBkPSJNMTMyIDMzNHYtMTU2YzAtMTgtMjMtMjgtMzctMTZsLTEyNiAxMjhjLTE1IDEyLTE1IDQwIDAgNTJsMTI2IDEyOGMxNSAxMiAzNyAzIDM3LTE2em0yNTYtOTZjLTE4LTItMzItMi00NiAxMXYxNTZjMCAxOC0yMyAyOC0zNyAxNWwtMTI2LTEyOGMtMTUtMTItMTUtMzggMC01Mmw4Ni04NmMxNC0xMyAzNy0xMyAzNyAxNXYxNTZjMCAxOC0yMyAyOC0zNyAxNWwtMTI2LTEyOGMtMTUtMTItMTUtMzggMC01MmwxMjYtMTI4YzE1LTEyIDM4LTEyIDUzIDBzMTUgMzggMCA1MmwtMTI2IDEyOGMtMTUgMTItMTUgMzggMCA1Mmw4Ni04NmMxNC0xMiAzNy0xMiAzNy0xNXpNMjAyIDFjLTEyIDAtMjQgNS0zMiAxNEwxNyAzNWMtMTMgMTEtMTUgMzItNCA0N2wxMjcgMTI3YzggOCAxNiAxNCAyNSAxNCA4IDAgMTYtNSA4NS04NXMxMC0yNSAxOC0zM3M5LTM0IDE0LTQ5bDEyNy0xMjZjMTEtMTEgOS0zMi0xMi00MnMtMzItNC00MiAxek0yOTAgNjhoLTE2Yy0yMi0xLjItNDkgMTEtNjcgMzJMMTQ2IDIwMWMtMTUgMTItMTUgMzgtMSA1M2wyMjAgMTQ1YzE5IDEyIDM4IDEyIDU4IDQgMjEgMTEgMjktMjQgMjgtMzdsLTIyMC0xNDFjLTE3LTEyLTI1LTQxLTktNTlsMTIxLTk2YzExLTggMjUtNyAzMyAxbDE2MyAxMDRjMTggMTAgMzEgMjkgMzEgNTIgMCAyNC0xOSAzNC0zNSA0MHoiIGZpbGw9IiM1NjU2NTYiLz48L3N2Zz4=') no-repeat center center;
+    background-size: 50px;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.lite-youtube .lty-playbtn span {
+    visibility: hidden;
+}
+
+.lty-playbtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 136px;
+    height: 96px;
+    background: url("/assets/img/play.png") no-repeat center;
+    background-size: contain;
+    border: #f8f9fa;
+    cursor: pointer;
+    text-indent: -9999px;
+}
+
+.lty-playbtn:hover {
+    opacity: 0.8;
+}
+
+.hidden {
+    display: none;
+}
+
+.video-container iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    display: block;
+    margin: 0 auto;
+}
+
+.info-section {
+    text-align: center;
+    background-color: #f8f9fa;
+    margin-top: -7rem;
+    /* Réduire la marge pour rapprocher du contenu précédent */
+}
+
+.info-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.info-section p {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
