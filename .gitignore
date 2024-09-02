@@ -40,6 +40,4 @@ testem.log
 Thumbs.db
 
 #ENV
-ENV/environment.ts
-../ENV
-ENV/*
+ENV/
