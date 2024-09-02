@@ -1,27 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { ENV } from '../../ENV/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AiRseService {
-  private apiUrl = 'https://api.openai.com/v1/chat/completions';
-  private apiKey = '';
+  private apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+  private apiKey = ENV.geminiApiKey; 
 
   constructor(private http: HttpClient) { }
 
   getResponse(prompt: string): Observable<any> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.apiKey}`,
       'Content-Type': 'application/json'
     });
 
     const body = {
-      model: "gpt-4o-mini",
-      messages: [{ role: "user", content: prompt }],
+      contents: [
+        {
+          parts: [{ text: prompt }]
+        }
+      ]
     };
 
-    return this.http.post(this.apiUrl, body, { headers });
+    return this.http.post(`${this.apiUrl}?key=${this.apiKey}`, body, { headers }).pipe(
+      catchError(error => {
+        console.error(`Request failed with status ${error.status}: ${error.message}`);
+        return throwError(() => error);
+      })
+    );
   }
 }

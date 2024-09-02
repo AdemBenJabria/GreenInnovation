@@ -1,9 +1,9 @@
 <div *ngIf="currentQuestionIndex < questions.length">
     <h2>{{ questions[currentQuestionIndex].question }}</h2>
     <div class="options">
-      <img src="{{ questions[currentQuestionIndex].options[0] }}" (click)="selectAnswer('a')" alt="Option A">
-      <img src="{{ questions[currentQuestionIndex].options[1] }}" (click)="selectAnswer('b')" alt="Option B">
-      <img src="{{ questions[currentQuestionIndex].options[2] }}" (click)="selectAnswer('c')" alt="Option C">
+      <img src="{{ questions[currentQuestionIndex].options[0] }}" (click)="selectAnswer('A')" alt="Option A">
+      <img src="{{ questions[currentQuestionIndex].options[1] }}" (click)="selectAnswer('B')" alt="Option B">
+      <img src="{{ questions[currentQuestionIndex].options[2] }}" (click)="selectAnswer('C')" alt="Option C">
     </div>
   </div>
   

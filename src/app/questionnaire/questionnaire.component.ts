@@ -42,11 +42,20 @@ export class QuestionnaireComponent {
 
   constructor(private diagnosticService: DiagnosticService, private router: Router) { }
 
-  selectAnswer(answer: 'a' | 'b' | 'c') {
+  /*selectAnswer(answer: 'a' | 'b' | 'c') {
     this.diagnosticService.recordAnswer(answer);
     this.currentQuestionIndex++;
     if (this.currentQuestionIndex >= this.questions.length) {
       this.router.navigate(['/result']);
     }
+  }*/
+
+    selectAnswer(answer: 'A' | 'B' | 'C') {
+    this.diagnosticService.updateResponse(this.currentQuestionIndex, answer);
+    this.currentQuestionIndex++;
+    if (this.currentQuestionIndex >= this.questions.length) {
+      this.router.navigate(['/result']);
+    }
   }
+
 }
