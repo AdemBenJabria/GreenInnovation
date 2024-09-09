@@ -1,0 +1,131 @@
+.pricing-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(to bottom, #1C215D, #233598);
+  
+    h2 {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        color: #ffffff;
+      }
+  }
+  
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  .plan-title {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .plan-description {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .metadata {
+    margin: 1.5rem 0;
+  }
+  
+  .price {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  
+    .font-semibold {
+      font-weight: bold;
+    }
+  }
+  
+  .ctas {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  
+    .button {
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      background-color: #2E51ED;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      
+      &:hover {
+        background-color: #2036A1;
+      }
+    }
+  }
+  
+  .pricing-card-features-list {
+    margin-top: 1rem;
+    text-align: left;
+  
+    .font-bold {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+  
+    ul {
+      padding-left: 1rem;
+      margin: 0;
+    }
+  
+  }
+
+  .checklist {
+    list-style: none; /* Supprime les puces par défaut */
+    padding: 0;
+    margin: 0;
+  
+    li {
+      position: relative;
+      padding-left: 1.5em; /* Espace pour l'icône */
+      margin-bottom: 0.5rem; /* Espacement entre les éléments de liste */
+    }
+  
+    li::before {
+      content: '\2713'; /* Code Unicode pour le check mark */
+      color: #28a745; /* Couleur verte pour le check mark */
+      font-weight: bold;
+      position: absolute;
+      left: 0; /* Positionne le check mark à gauche */
+      top: 0;
+    }
+  }
+
+span{
+    font-size: 2.5vh;
+}
+  
+  
+  

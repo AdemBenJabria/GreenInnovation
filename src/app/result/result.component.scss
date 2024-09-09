@@ -1,0 +1,204 @@
+/* Fond pastel de la page */
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 92vh;
+    background: linear-gradient(to right, #b7ffba, #fff8b6, #64b5f6); /* Dégradé horizontal de trois couleurs */
+    font-family: 'Arial', sans-serif; /* Police moderne */
+  }
+
+  .plans-row {
+    display: flex;
+    gap: 20px; /* Espacement entre les cartes */
+    justify-content: center; /* Centre les cartes horizontalement */
+    margin-bottom: 20px; /* Espace entre les rangées */
+  }
+
+/* Conteneur principal */
+.plan-container {
+    color: #938466;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 800; /* Police plus grasse */
+    text-shadow: 
+    -2px -2px 0 #ffffff,  
+    2px -2px 0 #ffffff,
+    -2px 2px 0 #ffffff,
+    2px 2px 0 #ffffff; /* Contours noirs */
+    max-width: 1400px;
+    width: 100%;
+    padding: 20px;
+    //border-radius: 10px;
+    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Centre le conteneur horizontalement */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre le contenu horizontalement */
+    justify-content: center;
+    height: 85vh;
+  }
+
+  .plan-container p{
+    margin-bottom: 3vh;
+  }
+  
+/* Carte de plan */
+.plan-card {
+  border: none;
+  //border-radius: 8px;
+  //background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column; /* Dispose le contenu verticalement */
+  align-items: center; /* Centre les éléments dans la carte */
+  width: 100%;
+  max-width: 250px; /* Largeur maximum des cartes */
+  margin: 0 15px; /* Espacement entre les cartes */
+  margin-bottom: 7vh;
+
+}
+
+.plan-card-small {
+    width: 15vh; /* Largeur plus petite pour les autres plans */
+    max-width: 200px; /* Largeur maximum des cartes */
+  }
+  
+.plan-cardPerso{
+    width: 50vh;
+    height: auto;
+}
+/* Style des images */
+.plan-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .recommended-plan .plan-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .plan-card:hover .plan-image {
+    transform: scale(1.05); /* Agrandissement au survol */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Augmente l'ombre au survol */
+  }
+  
+  /* Style du bouton */
+  .download-button {
+    background-color: #a2d5c6; /* Couleur pastel */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .download-button:hover {
+    background-color: #80c9a9; /* Couleur au survol */
+    transform: scale(1.05); /* Agrandissement au survol */
+  }
+  
+  button[type="submit"]:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  /* Message de succès ou d'erreur */
+  .success-message, .error-message {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ff6b6b;
+  }
+  
+  .success-message {
+    color: #3cb371;
+  }
+  
+  /* Titre pour les autres plans */
+  .other-plans-title {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .form-container p{
+    margin-bottom: 5vh;
+}
+
+div{
+    margin-bottom: 2vh;
+}
+
+body {
+    background-color: #f8e8e8; /* Couleur pastel pour le fond */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    //margin: 0;
+    font-family: 'Arial', sans-serif; /* Police moderne */
+  }
+  
+  /* Conteneur du formulaire */
+  .form-container {
+    background-color: white; /* Bloc blanc pour le formulaire */
+    padding: 30px;
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    max-width: 500px;
+    width: 100%;
+    text-align: center; /* Centrer le texte dans le formulaire */
+    margin-top: -15vh;
+  }
+  
+  /* Style des champs de formulaire */
+  input[type="text"],
+  input[type="email"] {
+    width: calc(100% - 20px); /* Largeur des champs */
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color :black;
+  }
+  
+  /* Style du bouton */
+  button[type="submit"] {
+    background-color: #3cb371; /* Couleur verte pour le bouton */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button[type="submit"]:disabled {
+    background-color: #cccccc; /* Bouton désactivé */
+    cursor: not-allowed;
+  }
+
+  
+  /* Message de succès ou d'erreur */
+  .success-message, .error-message {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ff6b6b; /* Couleur rouge pour les messages d'erreur */
+  }
+  
+  .success-message {
+    color: #3cb371; /* Couleur verte pour les messages de succès */
+  }
+  

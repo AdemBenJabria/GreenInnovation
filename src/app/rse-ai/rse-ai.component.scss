@@ -1,6 +1,8 @@
 html, body {
     height: 100%;
     margin: 0;
+    background-color: #1e1e1e; /* Couleur de fond sombre pour tout le body */
+    color: #ffffff; /* Texte en couleur claire */
     font-family: Arial, sans-serif;
   }
   
@@ -10,7 +12,7 @@ html, body {
     height: 88vh;
     width: 100%;
     align-items: center;
-    background: radial-gradient(circle, #ffffff, #b0ffff); /* Dégradé pastel du centre vers les bords */
+    background-color: #1e1e1e; 
     background-repeat: no-repeat;
     background-attachment: fixed; /* Pour que le fond reste en place lors du scroll */
   }
@@ -32,7 +34,7 @@ html, body {
   .message-row {
     width: 100%;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     margin: 10px 0;
     padding: 0 50vh;
   }
@@ -60,14 +62,13 @@ html, body {
   }
   
   .user .message-box {
-    //background-color: #e0ffe0;
-    color: #000;
+    background-color: #2c2c2c; /* Fond des messages en gris foncé */
+    color: #ffffff
   }
   
   .assistant .message-box {
     //background-color: #e0e0ff;
-    color: #000;
-
+    color: #ffffff;
   }
   
   .input-box {
@@ -76,7 +77,7 @@ html, body {
     position: fixed;
     align-items: center;
     padding: 10px;
-    background: radial-gradient(circle, #ffffff, #b0ffff); /* Dégradé pastel du centre vers les bords */
+    background-color: #1e1e1e; 
     //border-top: 1px solid #ccc;
     box-sizing: border-box;
     bottom: 0;
@@ -93,14 +94,14 @@ html, body {
 }
 
   
-  input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #ffffff; 
-    color:rgb(0, 0, 0)
-  }
+input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #333; /* Fond de l'input en gris foncé */
+  color: #ffffff;
+}
   
   button {
     margin-left: 10px;

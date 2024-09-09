@@ -149,19 +149,106 @@
     margin: 0 auto;
 }
 
-.info-section {
-    text-align: center;
-    background-color: #f8f9fa;
-    margin-top: -7rem;
-    /* Réduire la marge pour rapprocher du contenu précédent */
-}
-
-.info-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.info-section p {
+.hayaterra-section {
+    max-width: 800px; 
+    margin: -12vh auto; 
+    text-align: center; 
+    padding: 2rem 1rem;
+    margin-bottom: 2rem; 
+  }
+  
+  .hayaterra-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hayaterra-description {
     font-size: 1.2rem;
-    color: #6c757d;
-}
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem; /* Espacement entre les cartes */
+    padding: 2rem;
+    margin: 0 auto; /* Centre le conteneur sur la page */
+    max-width: 1200px; /* Limite la largeur maximale du conteneur */
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 350px; /* Largeur fixe pour les cartes */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+  
+    .badgeD {
+      background-color: #e0f7fa; /* Couleur de fond pour les badges */
+      color: #007bff; /* Couleur du texte pour les badges */
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .badgeK {
+        background-color: #b5d6b9; /* Couleur de fond pour les badges */
+        color: #2e602d; /* Couleur du texte pour les badges */
+        display: inline-block;
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+      }
+
+      .badgeIA {
+        background-color: #ffb6fa; /* Couleur de fond pour les badges */
+        color: #ff48a7; /* Couleur du texte pour les badges */
+        display: inline-block;
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+      }
+  
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+  
+    .card-link {
+      display: inline-block;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+  
+      &:hover {
+        color: #0056b3;
+      }
+    }  
+  }
+  
