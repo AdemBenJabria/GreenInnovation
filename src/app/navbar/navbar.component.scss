@@ -1,40 +1,62 @@
 .navbar {
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
-    .nav-items {
-      display: flex;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      cursor: pointer;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 2em; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 auto; 
+  max-width: 1200px; 
+  width: 100%; 
 
-  
-      .nav-item {
-        margin-right: 2em;
-  
-        a {
-          color: black;
-          text-decoration: none;
-          font-size: 1.2em;
-          transition: color 0.3s ease;
-  
-          &:hover {
-            color: #28a745; /* Couleur verte */
-          }
+
+  .nav-items {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    align-items: center; /* Aligne verticalement les éléments de la navbar */
+
+    .nav-item {
+      margin-right: 2em;
+
+      &:last-child {
+        margin-right: 0; /* Supprime la marge à droite pour le dernier élément */
+      }
+
+      a {
+        color: black;
+        text-decoration: none;
+        font-size: 1.2em;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #28a745; /* Couleur verte */
+        }
+      }
+
+      .button-link {
+        display: inline-block;
+        padding: 0.3em 0.3em;
+        border: 1.5px solid #28a745; 
+        color: #28a745; 
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1.2em;
+
+        &:hover {
+          background-color: #a8ffbc; /* Remplit le bouton en vert au survol */
+          color: rgb(0, 0, 0); /* Change la couleur du texte en blanc */
         }
       }
     }
-  
-    .logo {
-      img {
-        height: 50px; /* Ajuste la taille du logo comme nécessaire */
-        width: auto;
-      }
+  }
+
+  .logo {
+    img {
+      height: 50px; /* Ajuste la taille du logo comme nécessaire */
+      width: auto;
     }
   }
-  
+}
