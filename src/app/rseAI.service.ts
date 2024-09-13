@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ENV } from '../../ENV/environment';
+//import { ENV } from '../../ENV/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AiRseService {
   private apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
-  private apiKey = ENV.geminiApiKey; 
+  private apiKey = process.env['GEMINI_API_KEY']; 
 
   constructor(private http: HttpClient) { }
 
