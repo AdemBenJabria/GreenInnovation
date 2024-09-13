@@ -3,13 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 //import { ENV } from '../../ENV/environment';
+declare const window: any;
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AiRseService {
   private apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
-  private apiKey = process.env['GEMINI_API_KEY']; 
+  private apiKey = window.__env?.geminiApiKey; // Utilisez la clé API du fichier secret
 
   constructor(private http: HttpClient) { }
 
