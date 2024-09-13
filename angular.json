@@ -15,11 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/green-innovation",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "main": "src/main.ts",  
             "polyfills": [
               "zone.js"
             ],
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "GreenInnovation:build:production"
+              "browserTarget": "GreenInnovation:build:production" 
             },
             "development": {
-              "buildTarget": "GreenInnovation:build:development"
+              "browserTarget": "GreenInnovation:build:development"
             }
           },
           "defaultConfiguration": "development"
