@@ -88,6 +88,7 @@
   .plan-card:hover .plan-image {
     transform: scale(1.05); /* Agrandissement au survol */
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Augmente l'ombre au survol */
+    cursor: pointer;
   }
   
   /* Style du bouton */
