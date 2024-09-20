@@ -11,13 +11,9 @@ declare const window: any;
 })
 export class AiRseService {
   private apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
-  private apiKey = process.env['geminiApiKey'];
+  private apiKey = (window as any).__env.geminiApiKey;
 
   constructor(private http: HttpClient) {
-    this.apiKey = process.env['geminiApiKey'];
-    if (!this.apiKey) {
-      throw new Error('La variable d\'environnement geminiApiKey n\'est pas définie.');
-    }
   }
 
   getResponse(prompt: string): Observable<any> {
