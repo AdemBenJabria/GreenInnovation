@@ -11,9 +11,14 @@ declare const window: any;
 })
 export class AiRseService {
   private apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
-  private apiKey = window.__env?.geminiApiKey; // Utilisez la clé API du fichier secret
+  private apiKey = process.env['geminiApiKey'];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.apiKey = process.env['geminiApiKey'];
+    if (!this.apiKey) {
+      throw new Error('La variable d\'environnement geminiApiKey n\'est pas définie.');
+    }
+  }
 
   getResponse(prompt: string): Observable<any> {
     const headers = new HttpHeaders({
