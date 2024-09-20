@@ -14,6 +14,12 @@ export class AiRseService {
   private apiKey = (window as any).__env.geminiApiKey;
 
   constructor(private http: HttpClient) {
+    // Ajout de logs pour vérifier la clé API récupérée
+    console.log("Clé API récupérée depuis env.js : ", this.apiKey);
+    
+    if (!this.apiKey) {
+      throw new Error('La clé API Gemini n\'est pas définie.');
+    }
   }
 
   getResponse(prompt: string): Observable<any> {
