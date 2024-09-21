@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AiRseService } from '../rseAI.service';
@@ -12,7 +13,7 @@ import { NgClass } from '@angular/common';
   templateUrl: './rse-ai.component.html',
   styleUrls: ['./rse-ai.component.scss']
 })
-export class RseAIComponent {
+export class RseAIComponent implements AfterViewInit {
   loading = false;
   userInput: string = '';
   chatMessages: any[] = [];
@@ -22,7 +23,22 @@ export class RseAIComponent {
     'Comment intégrer la RSE dans notre stratégie d’entreprise?'
   ];
 
-  constructor(private aiRseService: AiRseService) {}
+  @ViewChild('chatBox', { static: false }) chatBox!: ElementRef;
+
+  constructor(private aiRseService: AiRseService, private router: Router, private renderer: Renderer2) {}
+
+  ngAfterViewInit() {
+    this.renderer.listen(this.chatBox.nativeElement, 'click', (event) => {
+      const target = event.target as HTMLElement;
+      if (target.tagName === 'A' && target.getAttribute('data-link')) {
+        event.preventDefault();
+        const link = target.getAttribute('data-link');
+        if (link) {
+          this.router.navigate([link]);
+        }
+      }
+    });
+  }
 
   sendMessage() {
     if (this.userInput.trim()) {
@@ -105,9 +121,10 @@ Si une question n'est pas liée à la RSE ou aux produits que je vends, donnez u
       .replace(/^# (.*?)$/gm, '<h1>$1</h1>')  // Remplace # par <h1>
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Remplace les double astérisques par du texte en gras
       .replace(/\* (.*?)\n/g, '<li>$1</li>\n') // Remplace les puces par des éléments de liste
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>') // Remplace les liens Markdown par des balises <a>
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="#" data-link="$2">$1</a>') // Utilise data-link à la place de href
       .replace(/\n/g, '<br>'); // Conserve les retours à la ligne avec des <br>
   }
+  
   
   
   
