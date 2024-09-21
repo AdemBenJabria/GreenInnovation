@@ -36,7 +36,6 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/env.js"
             ]
           },
           "configurations": {
@@ -89,6 +88,11 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               {
+                "glob": "favicon.ico",
+                "input": "src/",
+                "output": "/"
+              },
+              {
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets"
@@ -98,7 +102,6 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/env.js"
             ]
           }
         }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AiRseService } from '../rseAI.service';
 import { NgClass } from '@angular/common';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class RseAIComponent {
     'Comment intégrer la RSE dans notre stratégie d’entreprise?'
   ];
 
-  constructor(private aiRseService: AiRseService) {}
+  constructor(private aiRseService: AiRseService, private sanitizer: DomSanitizer) {}
 
   sendMessage() {
     if (this.userInput.trim()) {
@@ -37,10 +38,10 @@ Vous êtes un assistant IA spécialisé en Responsabilité Sociétale des Entrep
 Votre objectif est de fournir des réponses complètes mais concises aux questions de l'utilisateur sur la RSE, afin de leur donner une bonne compréhension du sujet sans entrer dans tous les détails.
 
 Pour chaque question :
-1. Offrez une réponse générale et informative qui couvre les points essentiels du sujet.
+1. Offrez une réponse complète et informative qui couvre les points essentiels du sujet.
 2. Mentionnez qu'il existe des ressources supplémentaires, telles que des kits, où l'utilisateur peut trouver des informations détaillées.
 
-Si la question de l'utilisateur concerne ou peut être associée à l'un des éléments suivants, répondez de manière concise mais complète et redirigez-les vers le kit approprié disponible à la vente sur "localhost:4200/kits" :
+Si la question de l'utilisateur concerne ou peut être associée à l'un des éléments suivants, répondez de manière concise mais complète et redirigez-les vers le kit approprié disponible à la vente sur [https://hayaterra.onrender.com/kits](https://hayaterra.onrender.com/kits) :
 
 - **Kit RSE** : Programme de sensibilisation, Idées ateliers RSE, Plan de communication, Les Objectifs du Développement Durable c'est quoi, Sujets Phare de la RSE Les Notions à Absolument Connaître, C'est quoi la RSE, 7 Questions centrales et 36 Domaines d'actions, Idées calendrier RSE, Calendrier RSE, 3 méthodes RSE, Définir ses axes, Glossaire RSE, Grille auto-diagnostic.
 
@@ -54,14 +55,15 @@ Si la question de l'utilisateur concerne ou peut être associée à l'un des él
 
 - **Kit Sociétal** : Plan de communication, Idées ateliers en société, Partenaires RSE, Idées calendrier RSE, Calendrier RSE, Programme de volontariat.
 
-Par exemple, si l'utilisateur demande comment organiser un atelier d'Intelligence Emotionnelle, donnez une réponse succincte sur les étapes principales de l'organisation, puis redirigez-les vers le "Kit Social" disponible ici : localhost:4200/kits.
+Par exemple, si l'utilisateur demande comment organiser un atelier d'Intelligence Emotionnelle, donnez une réponse succincte sur les étapes principales de l'organisation, puis redirigez-les vers le [Kit Social](https://hayaterra.onrender.com/kits).
 
-Si l'utilisateur demande une feuille de route ou pose une question nécessitant un diagnostic, proposez une réponse générale, puis redirigez-les vers : "localhost:4200/questionnaire".
+Si l'utilisateur demande une feuille de route ou pose une question nécessitant un diagnostic, proposez une réponse générale, puis redirigez-les vers : [Questionnaire](https://hayaterra.onrender.com/questionnaire).
 
-Si l'utilisateur demande comment nous contacter, répondez avec : "Vous pouvez nous contacter à l'adresse suivante : Hayaterra-SAV@gmail".
+Si l'utilisateur demande comment nous contacter, répondez avec : "Vous pouvez nous contacter à l'adresse suivante : [Hayaterra-SAV@gmail.com](mailto:Hayaterra-SAV@gmail.com)".
 
 Si une question n'est pas liée à la RSE ou aux produits que je vends, donnez une réponse brève en précisant que vous traitez principalement des questions relatives à la RSE et aux services proposés.
 `;
+
 
 
   
@@ -71,19 +73,20 @@ Si une question n'est pas liée à la RSE ou aux produits que je vends, donnez u
       this.aiRseService.getResponse(fullPrompt).subscribe(
         response => {
           console.log(response); // Vérifiez la structure de la réponse pour déboguer
-  
+      
           if (response && response.candidates && response.candidates[0] &&
             response.candidates[0].content && response.candidates[0].content.parts &&
             response.candidates[0].content.parts[0] && response.candidates[0].content.parts[0].text) {
-  
+      
             let assistantMessage = response.candidates[0].content.parts[0].text;
             assistantMessage = this.convertToAscii(assistantMessage);
-            this.chatMessages.push({ role: 'assistant', content: assistantMessage });
+            const sanitizedMessage = this.sanitizeContent(assistantMessage); // Utiliser sanitizeContent ici
+            this.chatMessages.push({ role: 'assistant', content: sanitizedMessage }); // Ajouter le message sécurisé
           } else {
             console.error('Unexpected response structure:', response);
             this.chatMessages.push({ role: 'assistant', content: 'Désolé, une erreur est survenue. Veuillez réessayer plus tard.' });
           }
-  
+      
           this.loading = false; // Arrête l'animation de chargement après réception de la réponse
         },
         error => {
@@ -95,7 +98,9 @@ Si une question n'est pas liée à la RSE ou aux produits que je vends, donnez u
     }
   }
   
-  
+  sanitizeContent(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
+  }  
   
   
   convertToAscii(text: string): string {
@@ -104,8 +109,10 @@ Si une question n'est pas liée à la RSE ou aux produits que je vends, donnez u
       .replace(/^# (.*?)$/gm, '<h1>$1</h1>')  // Remplace # par <h1>
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Remplace les double astérisques par du texte en gras
       .replace(/\* (.*?)\n/g, '<li>$1</li>\n') // Remplace les puces par des éléments de liste
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>') // Remplace les liens Markdown par des balises <a>
       .replace(/\n/g, '<br>'); // Conserve les retours à la ligne avec des <br>
   }
+  
   
   
   sendPresetQuestion(question: string) {
