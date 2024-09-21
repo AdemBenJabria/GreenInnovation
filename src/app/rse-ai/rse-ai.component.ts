@@ -1,5 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AiRseService } from '../rseAI.service';
@@ -13,7 +12,7 @@ import { NgClass } from '@angular/common';
   templateUrl: './rse-ai.component.html',
   styleUrls: ['./rse-ai.component.scss']
 })
-export class RseAIComponent implements AfterViewInit {
+export class RseAIComponent {
   loading = false;
   userInput: string = '';
   chatMessages: any[] = [];
@@ -23,22 +22,7 @@ export class RseAIComponent implements AfterViewInit {
     'Comment intégrer la RSE dans notre stratégie d’entreprise?'
   ];
 
-  @ViewChild('chatBox', { static: false }) chatBox!: ElementRef;
-
-  constructor(private aiRseService: AiRseService, private router: Router, private renderer: Renderer2) {}
-
-  ngAfterViewInit() {
-    this.renderer.listen(this.chatBox.nativeElement, 'click', (event) => {
-      const target = event.target as HTMLElement;
-      if (target.tagName === 'A' && target.getAttribute('data-link')) {
-        event.preventDefault();
-        const link = target.getAttribute('data-link');
-        if (link) {
-          this.router.navigate([link]);
-        }
-      }
-    });
-  }
+  constructor(private aiRseService: AiRseService) {}
 
   sendMessage() {
     if (this.userInput.trim()) {
@@ -53,10 +37,10 @@ Vous êtes un assistant IA spécialisé en Responsabilité Sociétale des Entrep
 Votre objectif est de fournir des réponses complètes mais concises aux questions de l'utilisateur sur la RSE, afin de leur donner une bonne compréhension du sujet sans entrer dans tous les détails.
 
 Pour chaque question :
-1. Offrez une réponse complète et informative qui couvre les points essentiels du sujet.
+1. Offrez une réponse générale et informative qui couvre les points essentiels du sujet.
 2. Mentionnez qu'il existe des ressources supplémentaires, telles que des kits, où l'utilisateur peut trouver des informations détaillées.
 
-Si la question de l'utilisateur concerne ou peut être associée à l'un des éléments suivants, répondez de manière concise mais complète et redirigez-les vers le kit approprié disponible à la vente sur <a href="https://hayaterra.onrender.com/kits">https://hayaterra.onrender.com/kits</a> :
+Si la question de l'utilisateur concerne ou peut être associée à l'un des éléments suivants, répondez de manière concise mais complète et redirigez-les vers le kit approprié disponible à la vente sur "https://hayaterra.onrender.com/kits" :
 
 - **Kit RSE** : Programme de sensibilisation, Idées ateliers RSE, Plan de communication, Les Objectifs du Développement Durable c'est quoi, Sujets Phare de la RSE Les Notions à Absolument Connaître, C'est quoi la RSE, 7 Questions centrales et 36 Domaines d'actions, Idées calendrier RSE, Calendrier RSE, 3 méthodes RSE, Définir ses axes, Glossaire RSE, Grille auto-diagnostic.
 
@@ -70,15 +54,14 @@ Si la question de l'utilisateur concerne ou peut être associée à l'un des él
 
 - **Kit Sociétal** : Plan de communication, Idées ateliers en société, Partenaires RSE, Idées calendrier RSE, Calendrier RSE, Programme de volontariat.
 
-Par exemple, si l'utilisateur demande comment organiser un atelier d'Intelligence Emotionnelle, donnez une réponse succincte sur les étapes principales de l'organisation, puis redirigez-les vers le "Kit Social" disponible ici : <a href="https://hayaterra.onrender.com/kits">Kit Social</a>.
+Par exemple, si l'utilisateur demande comment organiser un atelier d'Intelligence Emotionnelle, donnez une réponse succincte sur les étapes principales de l'organisation, puis redirigez-les vers le "Kit Social" disponible ici : https://hayaterra.onrender.com/kits .
 
-Si l'utilisateur demande une feuille de route ou pose une question nécessitant un diagnostic, proposez une réponse générale, puis redirigez-les vers : <a href="https://hayaterra.onrender.com/questionnaire">Questionnaire</a>.
+Si l'utilisateur demande une feuille de route ou pose une question nécessitant un diagnostic, proposez une réponse générale, puis redirigez-les vers : "https://hayaterra.onrender.com/questionnaire".
 
-Si l'utilisateur demande comment nous contacter, répondez avec : "Vous pouvez nous contacter à l'adresse suivante : <a href="mailto:Hayaterra-SAV@gmail.com">Hayaterra-SAV@gmail.com</a>".
+Si l'utilisateur demande comment nous contacter, répondez avec : "Vous pouvez nous contacter à l'adresse suivante : Hayaterra-SAV@gmail".
 
 Si une question n'est pas liée à la RSE ou aux produits que je vends, donnez une réponse brève en précisant que vous traitez principalement des questions relatives à la RSE et aux services proposés.
 `;
-
 
 
   
@@ -121,11 +104,8 @@ Si une question n'est pas liée à la RSE ou aux produits que je vends, donnez u
       .replace(/^# (.*?)$/gm, '<h1>$1</h1>')  // Remplace # par <h1>
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Remplace les double astérisques par du texte en gras
       .replace(/\* (.*?)\n/g, '<li>$1</li>\n') // Remplace les puces par des éléments de liste
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="#" data-link="$2">$1</a>') // Utilise data-link à la place de href
       .replace(/\n/g, '<br>'); // Conserve les retours à la ligne avec des <br>
   }
-  
-  
   
   
   sendPresetQuestion(question: string) {
