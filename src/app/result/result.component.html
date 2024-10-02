@@ -2,31 +2,31 @@
   <!-- Afficher les plans d'accompagnement -->
   <div *ngIf="showPlanDownload" class="plan-container">
     <p>Merci, nous avons bien pris en compte vos réponses. Voici le plan d'accompagnement personnalisé pour vous :</p>
-    
-    <div class="plan-card">
+
+    <div class="plan-card plan-card-large">
       <a (click)="downloadPlan('assets/pdf/' + selectedPlan + '.pdf')">
         <img src="assets/img/{{ selectedPlan + '.png'}}" alt="Plan personnalisé" class="plan-image">
       </a>
     </div>
 
     <p class="other-plans-title">Cela pourrait aussi vous intéresser :</p>
-    
-    <!-- Conteneur pour aligner les plans côte à côte -->
+
+    <!-- Conteneur pour aligner les plans -->
     <div class="plans-row">
       <!-- Autres plans d'accompagnement -->
-      <div class="plan-card plan-card-small" *ngIf="selectedPlan !== 'plan1'">
+      <div class="plan-card" *ngIf="selectedPlan !== 'plan1'">
         <a (click)="downloadPlan('assets/pdf/plan1.pdf')">
           <img src="assets/img/plan1.png" alt="Plan 1" class="plan-image">
         </a>
       </div>
 
-      <div class="plan-card plan-card-small" *ngIf="selectedPlan !== 'plan2'">
+      <div class="plan-card" *ngIf="selectedPlan !== 'plan2'">
         <a (click)="downloadPlan('assets/pdf/plan2.pdf')">
           <img src="assets/img/plan2.png" alt="Plan 2" class="plan-image">
         </a>      
       </div>
 
-      <div class="plan-card plan-card-small" *ngIf="selectedPlan !== 'plan3'">
+      <div class="plan-card" *ngIf="selectedPlan !== 'plan3'">
         <a (click)="downloadPlan('assets/pdf/plan3.pdf')">
           <img src="assets/img/plan3.png" alt="Plan 3" class="plan-image">
         </a>      
@@ -34,29 +34,28 @@
     </div>
   </div>
 
-
   <!-- Formulaire de contact -->
   <div *ngIf="showContactForm" class="form-container">
     <p>Vos réponses ont bien été prises en compte. Nous allons réaliser une fiche personnalisée. Laissez-nous vos coordonnées pour que nous puissions vous recontacter dans les meilleurs délais.</p>
     
     <form [formGroup]="contactForm" (ngSubmit)="onSubmitContactForm()">
-      <div>
+      <div class="form-group">
         <label for="phone">Numéro de téléphone :</label>
         <input type="text" id="phone" formControlName="phone" placeholder="Entrez votre numéro de téléphone">
-      </div>
-      <div *ngIf="contactForm.get('phone')?.hasError('pattern') && contactForm.get('phone')?.touched">
-        <small>Veuillez entrer un numéro de téléphone valide.</small>
+        <div class="error" *ngIf="contactForm.get('phone')?.hasError('pattern') && contactForm.get('phone')?.touched">
+          <small>Veuillez entrer un numéro de téléphone valide.</small>
+        </div>
       </div>
 
-      <div>
+      <div class="form-group">
         <label for="email">Adresse e-mail :</label>
         <input type="email" id="email" formControlName="email" placeholder="Entrez votre adresse e-mail">
-      </div>
-      <div *ngIf="contactForm.get('email')?.hasError('email') && contactForm.get('email')?.touched">
-        <small>Veuillez entrer une adresse e-mail valide.</small>
+        <div class="error" *ngIf="contactForm.get('email')?.hasError('email') && contactForm.get('email')?.touched">
+          <small>Veuillez entrer une adresse e-mail valide.</small>
+        </div>
       </div>
 
-      <div *ngIf="contactForm.hasError('atLeastOneRequired') && (contactForm.get('phone')?.touched || contactForm.get('email')?.touched)">
+      <div class="error" *ngIf="contactForm.hasError('atLeastOneRequired') && (contactForm.get('phone')?.touched || contactForm.get('email')?.touched)">
         <small>Veuillez fournir au moins un numéro de téléphone ou une adresse e-mail.</small>
       </div>
 
@@ -70,7 +69,7 @@
 
     <!-- Message d'erreur -->
     <div *ngIf="errorSendingEmail" class="error-message">
-      <p>Erreur lors de l'envoi de l'e-mail. Veuillez réessayer plus tard.</p>
+      <p>Fonctionnalité bientôt disponible.</p>
     </div>
   </div>
 </div>

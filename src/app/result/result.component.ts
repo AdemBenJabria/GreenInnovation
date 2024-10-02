@@ -24,7 +24,7 @@ export class ResultComponent {
   constructor(private fb: FormBuilder, private http: HttpClient, private DiagnosticService: DiagnosticService) {
     // Initialisation du formulaire de contact
     this.contactForm = this.fb.group({
-      phone: ['', Validators.pattern('^\\+?[1-9]\\d{1,14}$')],
+      phone: ['', Validators.pattern('^06\\s?\\d{2}\\s?\\d{2}\\s?\\d{2}\\s?\\d{2}$')],
       email: ['', Validators.email],
     }, { validator: this.atLeastOneContactValidator });
   }

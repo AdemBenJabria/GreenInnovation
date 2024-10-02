@@ -1,9 +1,14 @@
 <div *ngIf="currentQuestionIndex < questions.length">
-    <h2>{{ questions[currentQuestionIndex].question }}</h2>
-    <div class="options">
-      <img src="{{ questions[currentQuestionIndex].options[0] }}" (click)="selectAnswer('A')" alt="Option A">
-      <img src="{{ questions[currentQuestionIndex].options[1] }}" (click)="selectAnswer('B')" alt="Option B">
-      <img src="{{ questions[currentQuestionIndex].options[2] }}" (click)="selectAnswer('C')" alt="Option C">
+  <h2>{{ questions[currentQuestionIndex].question }}</h2>
+  <div class="options">
+    <div class="option" (click)="selectAnswer('A')">
+      <img src="{{ questions[currentQuestionIndex].options[0] }}" alt="Option A">
+    </div>
+    <div class="option" (click)="selectAnswer('B')">
+      <img src="{{ questions[currentQuestionIndex].options[1] }}" alt="Option B">
+    </div>
+    <div class="option" (click)="selectAnswer('C')">
+      <img src="{{ questions[currentQuestionIndex].options[2] }}" alt="Option C">
     </div>
   </div>
-  
+</div>

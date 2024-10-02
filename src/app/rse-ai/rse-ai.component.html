@@ -6,16 +6,16 @@
         <img class="avatar" src="assets/img/ai.png" alt="avatar">
       </ng-container>
       <div class="message-box">
-        <div class="message-content" [innerHTML]="message.content"></div> <!-- Utilisation de [innerHTML] -->
+        <div class="message-content" [innerHTML]="message.content"></div>
       </div>
     </div>
-    <!-- Preset questions -->
+    <!-- Questions prédéfinies -->
     <div *ngIf="chatMessages.length === 0" class="preset-questions">
       <button *ngFor="let question of presetQuestions" (click)="sendPresetQuestion(question)">
         {{ question }}
       </button>
     </div>
-    <!-- Loading animation -->
+    <!-- Animation de chargement -->
     <div *ngIf="loading" class="loading-animation">
       <div class="dot"></div>
       <div class="dot"></div>
