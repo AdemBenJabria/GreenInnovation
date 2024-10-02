@@ -4,19 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hayaterra</title>
+  <!-- Lien vers le fichier CSS -->
 </head>
 <body>
   <nav class="navbar">
     <div class="logo">
       <a routerLink="/">
-        <img src="assets/img/green.png">
+        <img src="assets/img/green.png" alt="Logo Hayaterra">
       </a>
     </div>
     <input type="checkbox" id="menu-toggle">
     <label for="menu-toggle" class="menu-icon">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </label>
     <ul class="nav-items">
       <li class="nav-item"><a (click)="startDiagnostic()" routerLink="/questionnaire">Diagnostic RSE</a></li>
@@ -24,6 +25,5 @@
       <li class="nav-item"><a routerLink="/ia" class="button-link">Notre IA RSE</a></li>
     </ul>
   </nav>
-
 </body>
 </html>
