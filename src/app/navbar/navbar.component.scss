@@ -1,11 +1,10 @@
-/* Styles généraux pour rendre le site responsive */
+/* Base Styles */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
 }
 
-/* Navbar */
 .navbar {
   background-color: white;
   display: flex;
@@ -15,6 +14,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
+  z-index: 10;
 }
 
 .navbar .logo img {
@@ -30,6 +30,8 @@ body {
   display: none;
   flex-direction: column;
   cursor: pointer;
+  padding: 10px;
+  z-index: 20;
 }
 
 .menu-icon span {
@@ -40,7 +42,6 @@ body {
   border-radius: 3px;
 }
 
-/* Navigation items */
 .nav-items {
   display: flex;
   list-style-type: none;
@@ -86,26 +87,24 @@ body {
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
   .navbar {
-    padding: 0.5em 1em;
+    flex-wrap: wrap;
   }
 
-  /* Afficher le menu hamburger */
+  /* Show the menu icon */
   .menu-icon {
     display: flex;
   }
 
-  /* Masquer les éléments de navigation par défaut */
+  /* Hide the navigation items by default */
   .nav-items {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: white;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.3s ease-out;
+    z-index: 15;
   }
 
   .nav-item {
@@ -119,227 +118,9 @@ body {
     box-sizing: border-box;
   }
 
-  /* Lorsque le menu est activé */
-  #menu-toggle:checked + .menu-icon + .nav-items {
-    max-height: 500px; /* Une hauteur suffisante pour afficher tous les éléments */
+  /* Show navigation items when the menu is toggled */
+  #menu-toggle:checked ~ .nav-items {
+    max-height: 500px;
     transition: max-height 0.5s ease-in;
-  }
-}
-
-/* Autres styles pour le reste de la page */
-/* ... (Vous pouvez conserver vos styles existants, en les adaptant si nécessaire) ... */
-
-/* Hero Section */
-.hero-section {
-  background: linear-gradient(to bottom, #81c784, #aed581);
-  color: white;
-  text-align: center;
-  padding: 4rem 2rem 15rem 2rem;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: -1rem;
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
-
-.hero-buttons .btn {
-  padding: 0.8rem 1.5rem;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 0 0.5rem;
-  display: inline-block;
-}
-
-.btn.primary {
-  background-color: white;
-  color: #388e3c;
-}
-
-.btn.primary:hover {
-  background-color: #f0f0f0;
-}
-
-/* Vidéo Section */
-.video-section {
-  position: relative;
-  top: -157.5px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  margin-bottom: 0;
-  border-radius: 8px;
-  z-index: 2;
-}
-
-.video-section iframe, .video-thumbnail {
-  width: 100%;
-  max-width: 560px;
-  height: auto;
-}
-
-.video-cover {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.video-thumbnail {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border: 1.5px solid white;
-  border-radius: 16px;
-}
-
-.lty-playbtn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 68px;
-  height: 48px;
-  background: url('/assets/img/play.png') no-repeat center;
-  background-size: contain;
-  cursor: pointer;
-  text-indent: -9999px;
-}
-
-.hidden {
-  display: none;
-}
-
-/* Hayaterra Section */
-.hayaterra-section {
-  max-width: 800px;
-  margin: -12vh auto 2rem auto;
-  text-align: center;
-  padding: 2rem 1rem;
-}
-
-.hayaterra-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-.hayaterra-description {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 1rem;
-}
-
-/* Cards Container */
-.cards-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2rem;
-  padding: 2rem;
-  margin: 0 auto;
-  max-width: 1200px;
-  flex-wrap: wrap;
-}
-
-.card {
-  background-color: #ffffff;
-  border: 1px solid #e6e6e6;
-  border-radius: 12px;
-  padding: 2rem;
-  width: 100%;
-  max-width: 350px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: left;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
-
-.badgeD, .badgeK, .badgeIA {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
-}
-
-.badgeD {
-  background-color: #c1ffc1;
-  color: #00650d;
-}
-
-.badgeK {
-  background-color: #738fff;
-  color: #0011ff;
-}
-
-.badgeIA {
-  background-color: #ffb6fa;
-  color: #ff48a7;
-}
-
-.card-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.card p {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 1.5rem;
-}
-
-.card-link {
-  display: inline-block;
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.card-link:hover {
-  color: #0056b3;
-}
-
-/* Adaptation des polices pour mobile */
-@media screen and (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-  }
-
-  .hayaterra-title {
-    font-size: 1.5rem;
-  }
-
-  .hayaterra-description {
-    font-size: 0.9rem;
-  }
-
-  .card {
-    max-width: 100%;
-  }
-
-  .card-title {
-    font-size: 1.25rem;
-  }
-
-  .card p {
-    font-size: 0.9rem;
   }
 }
